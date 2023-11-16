@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./assets/UserDetailsTab.module.css";
-
+// this provides the structure for each user details
 const UserDetailsTab = ({ user, GenerateReport }) => {
   const creationDate = new Date().toLocaleString();
   const handleViewClick = () => {
@@ -32,7 +32,6 @@ UserDetailsTab.propTypes = {
     username: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
     phone: PropTypes.string.isRequired,
-    creationDate: PropTypes.string.isRequired,
   }).isRequired,
   GenerateReport: PropTypes.func.isRequired,
 };

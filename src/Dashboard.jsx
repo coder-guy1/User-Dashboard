@@ -3,7 +3,7 @@ import { useState } from "react";
 import AccountCreationTab from "./AccountCreationTab";
 import UserList from "./UserList";
 import styles from "./assets/Dashboard.module.css";
-
+//To display the selected tabs oi have used activeTabs state to know which tab is selected
 const Dashboard = () => {
   const [activeTab, setActiveTab] = useState("userDetails");
   console.log("jiixhh");

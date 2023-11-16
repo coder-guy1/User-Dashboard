@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import UserDetailsTab from "./UserDetailsTab";
 import Report from "./Report";
 import styles from "./assets/UserList.module.css";
-
+//this will fetch the data from api and use UserDetails tab to display the details of each user using map function
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
@@ -12,7 +12,7 @@ const UserList = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/users");
+        const response = await fetch("https://fakestoreapi.com/users"); //api from where data is fetched
         const usersData = await response.json();
         setUsers(usersData);
       } catch (error) {

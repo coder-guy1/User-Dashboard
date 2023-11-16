@@ -1,10 +1,11 @@
+import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import styles from "./assets/Report.module.css";
-
+//Generates the report of the seleted user
 const Report = () => {
   const { userId } = useParams();
   const [userData, setUserData] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -21,6 +22,11 @@ const Report = () => {
 
     fetchUserData();
   }, [userId]);
+
+  const handleGoBack = () => {
+    // Use navigate to go back to the previous page
+    navigate(-1);
+  };
 
   if (!userData) {
     return <div>Loading...</div>;
@@ -48,8 +54,8 @@ const Report = () => {
           </span>
           <span className={styles.value}>{userData.phone}</span>
         </li>
-        {/* Add more user information as needed */}
       </ul>
+      <button onClick={handleGoBack}>Go Back</button>
     </div>
   );
 };
