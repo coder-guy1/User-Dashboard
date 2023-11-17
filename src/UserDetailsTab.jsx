@@ -2,11 +2,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import styles from "./assets/UserDetailsTab.module.css";
 // this provides the structure for each user details
-const UserDetailsTab = ({ user, GenerateReport }) => {
+const UserDetailsTab = ({ user }) => {
   const creationDate = new Date().toLocaleString();
-  const handleViewClick = () => {
-    GenerateReport(user);
-  };
 
   return (
     <tr key={user.id}>
@@ -17,9 +14,7 @@ const UserDetailsTab = ({ user, GenerateReport }) => {
       <td>{creationDate}</td>
       <td>
         <Link to={`/report/${user.id}`}>
-          <button className={styles.button} onClick={handleViewClick}>
-            View
-          </button>
+          <button className={styles.button}>View</button>
         </Link>
       </td>
     </tr>

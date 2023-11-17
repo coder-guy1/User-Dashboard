@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import UserDetailsTab from "./UserDetailsTab";
-import Report from "./Report";
+
 import styles from "./assets/UserList.module.css";
 //this will fetch the data from api and use UserDetails tab to display the details of each user using map function
 const UserList = () => {
   const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(true);
-  const [selectedUser, setSelectedUser] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,19 +27,6 @@ const UserList = () => {
   const filteredUsers = users.filter((user) =>
     user.username.includes(searchTerm)
   );
-
-  const openModal = (user) => {
-    setSelectedUser(user);
-  };
-
-  const closeModal = () => {
-    setSelectedUser(null);
-  };
-
-  const generateReport = (user) => {
-    alert(`Generating report for ${user.username}`);
-    closeModal();
-  };
 
   return (
     <div className={styles.container}>
@@ -71,21 +57,10 @@ const UserList = () => {
             </thead>
             <tbody>
               {filteredUsers.map((user) => (
-                <UserDetailsTab
-                  key={user.id}
-                  user={user}
-                  onOpenModal={() => openModal(user)}
-                />
+                <UserDetailsTab key={user.id} user={user} />
               ))}
             </tbody>
           </table>
-          {selectedUser && (
-            <Report
-              user={selectedUser}
-              onClose={closeModal}
-              GenerateReport={generateReport}
-            />
-          )}
         </>
       )}
     </div>
